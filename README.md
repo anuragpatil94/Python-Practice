@@ -14,3 +14,5 @@ This is a part of my daily plan to study python and data structures
     1. python-primer
         1. some examples of List Comprehension
         2. recursion examples
+3. interview-quesions
+   1. find n<sup>th</sup> smallest in the set
