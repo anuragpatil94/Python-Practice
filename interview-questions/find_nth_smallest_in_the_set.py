@@ -27,14 +27,13 @@ def findShortestInList(arr):
 def findSecondShortestInList(arr):
     min1 = arr[0]
     min2 = arr[1]
-    for index, num in enumerate(arr[2:], start = 2):
+    for index in enumerate(arr[2:], start = 2):
         if arr[index] < min2:
             arr[index], min2 = min2, arr[index]
         elif arr[index] < min1:
             arr[index],min1 = min1,arr[index]
         if min2 < min1:
             min1,min2 = min2,min1
-        # print("num:",num," min1: ",min1," min2: ",min2)
     return min2
 
 def findNthShortestInList(arr,n):
