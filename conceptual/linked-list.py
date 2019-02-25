@@ -19,9 +19,9 @@ functions to implement
 7)  pop_back() - removes end item and returns its value                             --- O(n)
 8)  front() - get value of front item                                               --- O(1)
 9)  back() - get value of end item                                                  --- O(n)
-10) insert(index, value) - insert value at index, so current item at that index     --- O(k) where k is the kth elemnet from head
+10) insert(index, value) - insert value at index, so current item at that index     --- O(k) where k is the kth element from head
     is pointed to by new item at index 
-11) erase(index) - removes node at given index                                      --- O()
+11) erase(index) - removes node at given index                                      --- O(k) where k is the kth element from head
 12) value_n_from_end(n) - returns the value of the node at nth position from 
     the end of the list 
 13) reverse() - reverses the list 
@@ -196,8 +196,69 @@ class LinkedList:
                     h = None
                     return data
             idx += 1
-            # previous = h 
+            previous = h 
             h = h.next
+        
+        # Pop the last element
+        data = previous.data
+        previous.next = None
+        return data
+
+    def value_n_from_end(self, n):
+        ''' returns the value of nth positon from the end of the list '''
+        size = self.size()
+        if n < 0:
+            return "The value passed cannot be negative"
+        if n > size:
+            return "the value passed cannot be greater than the size"
+        idx = 0
+        h = self.head
+        remainder = size - n
+        while h is not None:
+            if idx == remainder:
+                return h.data
+            idx += 1
+
+            h = h.next
+        pass
+
+    def reverse(self):
+        ''' Reverses the Linked List '''
+
+        h = self.head
+        previous = None
+        while h is not None:
+            next = h.next
+            h.next = previous
+            previous = h
+            h = next
+
+        self.head = previous
+
+        # self.head.next = h
+        # pass
+    
+    def remove_value(self, value):
+        ''' Matches the Value and removes the first occurance of it from the Linked List and returns the index '''
+        if self.empty():
+            return "Linked List is empty"
+        h = self.head
+        previous = self.head
+        idx = 0
+        while h is not None:
+            if h.data is value:
+                if previous is h:
+                    self.head = h.next
+                    return idx
+                else:
+                    previous.next = h.next
+                    h = None
+                    return idx
+            idx += 1
+            previous = h
+            h = h.next
+            
+        pass
 
     def show(self):
         ''' Shows Linked List Representation for current Linked List '''
@@ -214,7 +275,8 @@ class LinkedList:
 
 if __name__ == "__main__":
     l = LinkedList()
-
+    print("----------------------------------------------------------------------------------")
+    print("Push and Pop")
     l.push(2)
     l.push(3)
     l.push(5)
@@ -240,7 +302,8 @@ if __name__ == "__main__":
     print("Size of LinkedList: ", l.size())
     print("Value at 5th Position: ",l.value_at(5))
     print("front: ",l.front(), "back: ", l.back())
-
+    print("----------------------------------------------------------------------------------")
+    print("Insert")
     l.insert(0,12)
     print("Inserting 12 at 0th position")
     l.show()
@@ -256,7 +319,8 @@ if __name__ == "__main__":
     l.show()
     
     print("Size of LinkedList: ", l.size())
-
+    print("----------------------------------------------------------------------------------")
+    print("Erase")
     print("Erased Index 0: ",l.erase(0))
     l.show()
 
@@ -268,3 +332,24 @@ if __name__ == "__main__":
     l.show()
     print("Size of LinkedList: ", l.size())
 
+    print("----------------------------------------------------------------------------------")
+    print("nth value from end")
+    l.show()
+    size = l.size()
+    print("4th Element from end", l.value_n_from_end(4))
+    print("0th Element from end", l.value_n_from_end(0))
+    print("1st Element from end", l.value_n_from_end(1))
+    print("last Element from end", l.value_n_from_end(size))
+
+    print("----------------------------------------------------------------------------------")
+    print("Remove Value")
+    l.show()
+    index = l.remove_value(2)
+    print("Index of removed vlaue:", index)
+    l.show()
+
+    print("----------------------------------------------------------------------------------")
+    print("Reverse")
+    l.push(8)
+    l.reverse()
+    l.show()
