@@ -162,7 +162,7 @@ class LinkedList:
         while h.next is not None:
             if idx is index:
                 if previous is not h:
-                    prevous.next = n
+                    previous.next = n
                     n.next = h
                 else:
                     self.head = n
@@ -170,7 +170,7 @@ class LinkedList:
                 h = n
                 return
             idx += 1
-            prevous = h
+            previous = h
             h = h.next
         
     def erase(self, index):
