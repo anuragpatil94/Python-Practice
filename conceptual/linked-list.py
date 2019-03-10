@@ -205,22 +205,33 @@ class LinkedList:
         return data
 
     def value_n_from_end(self, n):
-        ''' returns the value of nth positon from the end of the list '''
+        ''' returns the value of nth positon from the end of the list, where n is the Index string from 0. Hence 0th element is the last element '''
         size = self.size()
         if n < 0:
             return "The value passed cannot be negative"
         if n > size:
             return "the value passed cannot be greater than the size"
-        idx = 0
-        h = self.head
-        remainder = size - n
-        while h is not None:
-            if idx == remainder:
-                return h.data
-            idx += 1
 
+        h = self.head
+
+        # MY SOLUTION - O(2n) TIme O(1) Space - For a Huge List it will take more Time to Traverse 2 times.
+        # idx = 0
+        # remainder = size - n
+        # while h is not None:
+        #     if idx == remainder:
+        #         return h.data
+        #     idx += 1
+        #     h = h.next
+
+        # BEST SOLUTION - O(n) Time and O(m) Space
+        arr = list()
+        while h is not None:
+            if len(arr) == n + 1:
+                arr.pop(0)
+            arr.append(h.data)
             h = h.next
-        pass
+        return arr[0]
+
 
     def reverse(self):
         ''' Reverses the Linked List '''
