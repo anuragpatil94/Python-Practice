@@ -232,7 +232,6 @@ class LinkedList:
             h = h.next
         return arr[0]
 
-
     def reverse(self):
         ''' Reverses the Linked List '''
 
