@@ -51,7 +51,6 @@ def sumListsForward(l1,l2):
         if l1 is None and l2 is None: return 0
         carry = _sumListsForward(l1.next,l2.next)
         sumOfDigits = (l1.data+l2.data+carry)%10
-        print(sumOfDigits,carry)
         l3.push_front(sumOfDigits)
         return (l1.data+l2.data+carry)//10
 
@@ -71,21 +70,21 @@ def sumListsForward(l1,l2):
     
 
 if __name__ == "__main__":
-    # l1 = LinkedList()
-    # l2 = LinkedList()
+    l1 = LinkedList()
+    l2 = LinkedList()
 
-    # l1.push(7)
-    # l1.push(1)
-    # l1.push(6)
-    # print("INPUT: ",l1.show())
+    l1.push(7)
+    l1.push(1)
+    l1.push(6)
+    print("INPUT: ",l1.show())
 
-    # l2.push(5)
-    # l2.push(9)
-    # l2.push(2)
-    # print("INPUT: ",l2.show())
+    l2.push(5)
+    l2.push(9)
+    l2.push(2)
+    print("INPUT: ",l2.show())
 
-    # output = sumListsBackward(l1.head,l2.head)
-    # print("OUTPUT: ",output.show())
+    output = sumListsBackward(l1.head,l2.head)
+    print("OUTPUT: ",output.show())
 
     l1 = LinkedList()
     l2 = LinkedList()
@@ -98,24 +97,6 @@ if __name__ == "__main__":
     l2.push(2)
     l2.push(1)
     print("INPUT: ",l2.show())
-
-    # output = sumListsBackward(l1.head,l2.head)
-
-
-    # print("OUTPUT: ",output.show())
-
-    # l1 = LinkedList()
-    # l2 = LinkedList()
-
-    # l1.push(6)
-    # l1.push(1)
-    # l1.push(7)
-    # print("INPUT: ",l1.show())
-
-    # l2.push(2)
-    # l2.push(9)
-    # l2.push(5)
-    # print("INPUT: ",l2.show())
     
     output = sumListsForward(l1,l2)
     print("OUTPUT: ",output.show())
