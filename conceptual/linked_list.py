@@ -223,7 +223,8 @@ class LinkedList:
         #     idx += 1
         #     h = h.next
 
-        # BEST SOLUTION - O(n) Time and O(m) Space
+        # BETTER SOLUTION - O(n) Time and O(m) Space 
+        # BEST SOLUTION - Check Cracking the Coding Interview Q-2.2
         arr = list()
         while h is not None:
             if len(arr) == n + 1:
