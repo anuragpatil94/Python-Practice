@@ -62,6 +62,21 @@ class LinkedList:
             l = l.next
             idx += 1
         return l.data
+    
+    def getNode_at(self, index):
+        ''' Returns the Value of the Node at certain index '''
+        if self.empty():
+            return "Linked List Empty"
+        
+        idx = 1
+        l = self.head
+        while l.next is not None:
+            if idx is index:
+                break
+            
+            l = l.next
+            idx += 1
+        return l
 
     def empty(self):
         ''' Return True if Empty '''
@@ -205,7 +220,7 @@ class LinkedList:
         return data
 
     def value_n_from_end(self, n):
-        ''' returns the value of nth positon from the end of the list, where n is the Index string from 0. Hence 0th element is the last element '''
+        ''' returns the value of nth position from the end of the list, where n is the Index string from 0. Hence 0th element is the last element '''
         size = self.size()
         if n < 0:
             return "The value passed cannot be negative"
@@ -250,7 +265,7 @@ class LinkedList:
         # pass
     
     def remove_value(self, value):
-        ''' Matches the Value and removes the first occurance of it from the Linked List and returns the index '''
+        ''' Matches the Value and removes the first occurrence of it from the Linked List and returns the index '''
         if self.empty():
             return "Linked List is empty"
         h = self.head
@@ -356,7 +371,7 @@ if __name__ == "__main__":
     print("Remove Value")
     l.show()
     index = l.remove_value(2)
-    print("Index of removed vlaue:", index)
+    print("Index of removed value:", index)
     l.show()
 
     print("----------------------------------------------------------------------------------")
