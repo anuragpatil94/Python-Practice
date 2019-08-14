@@ -58,3 +58,30 @@ class Solution:
                         unique.remove(s[x])
                     x+=1
         return store
+
+    def lengthOfLongestSubstringUsingBooleanList(self, s: str) -> int:
+        unique = [0] * 52
+        x = 0
+        y = 0
+        store = 0
+        
+        if len(s) == 1: 
+            return 1
+        
+        for y in range(len(s)):
+            if unique[self.getOrdEquivalent(s[y])]==0:
+                unique[self.getOrdEquivalent(s[y])] = 1
+                store = (y-x+1) if (y-x+1) > store else store
+            else:
+                found = 0
+                while found == 0:
+                    if s[x] == s[y]:
+                        found = 1
+                    else:
+                        unique[self.getOrdEquivalent(s[x])] = 0
+                    x+=1
+        return store
+    
+    def getOrdEquivalent(letter):
+        if(ord(letter) >= 97): return 26 + (ord(letter) - ord('a'))
+        if(ord(letter) >= 65): return (ord(letter) - ord('A'))

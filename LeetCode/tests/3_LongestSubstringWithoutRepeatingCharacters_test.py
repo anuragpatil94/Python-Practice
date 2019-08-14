@@ -18,7 +18,7 @@ class Test(unittest.TestCase):
         self.assertEqual(self.lengthOfLongestSubstring(self.solution,"bbbb"), 1, "Should be 1")
     
     def test_3_End(self):
-        self.assertEqual(self.lengthOfLongestSubstring(self.solution,"pwwkew"), 3, "Should be 3")
+        self.assertEqual(self.lengthOfLongestSubstring(self.solution,"abcAbca"), 4, "Should be 4")
     
     def test_4_EmptyString(self):
         self.assertEqual(self.lengthOfLongestSubstring(self.solution," "), 1, "Should be 1")
