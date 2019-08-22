@@ -13,9 +13,11 @@ functions to implement
 1)  size() - returns number of data nodes in linked list                            --- O(n)
 2)  empty() - returns true if linked list is empty                                  --- O(1)
 3)  value_at(index) - returns the value of the nth item (starting at 0 for first)   --- O(k) where k is kth element from head
+    getNode_at(index) - return node at certain index
 4)  push_front(value) - adds an item to the front of the list                       --- O(1)
 5)  pop_front() - remove front item and return its value                            --- O(1)
 6)  push(value) - adds an item at the end                                           --- O(n)
+    push_node(self, node) -adds a externally created node in the end of the linked list
 7)  pop_back() - removes end item and returns its value                             --- O(n)
 8)  front() - get value of front item                                               --- O(1)
 9)  back() - get value of end item                                                  --- O(n)
@@ -64,7 +66,7 @@ class LinkedList:
         return l.data
     
     def getNode_at(self, index):
-        ''' Returns the Value of the Node at certain index '''
+        ''' Returns the Node at certain index '''
         if self.empty():
             return "Linked List Empty"
         
@@ -87,6 +89,19 @@ class LinkedList:
     def push(self, data):
         ''' adds a node in the end of the linked list '''
         n = Node(data)
+        if self.empty():
+            self.head = n
+            return
+
+        l = self.head
+        while l.next is not None:
+            l = l.next
+        l.next = n
+        return
+    
+    def push_node(self, node):
+        ''' adds a externally created node in the end of the linked list '''
+        n = node
         if self.empty():
             self.head = n
             return
@@ -292,6 +307,17 @@ class LinkedList:
             return "Linked List is Empty"
 
         l = self.head
+        while l is not None:
+            print(l.data , end =  " ----> ")
+            l = l.next
+        print()
+        return
+    def showListFromNode(self, node):
+        ''' Shows Linked List Representation for current Linked List '''
+        if self.empty():
+            return "Linked List is Empty"
+
+        l = node
         while l is not None:
             print(l.data , end =  " ----> ")
             l = l.next
