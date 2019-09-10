@@ -39,8 +39,12 @@ class Solution:
     def StringCompression(self, string):
         if not len(string):
             return string
-        compressed = ""
+        
+        # To store compressed string
+        compressed = "" 
+        # Iterator for Number of letters in string
         i = 0 
+        # count of current letters
         count = 0
         current = None
         while i < len(string):
@@ -51,11 +55,15 @@ class Solution:
                 i+=1
             else:
                 current = string[i]
-                compressed += string[i-1] + str(count)
-                count=0
-        compressed += string[i-1] + str(count)
-        return string if len(compressed) > len(string) else compressed
+                compressed = ''.join([compressed, string[i-1], str(count)])
+                count = 0
+            if len(compressed) > len(string):
+                return string
+        compressed = ''.join([compressed, string[i-1], str(count)])
+        if len(compressed) > len(string):
+            return string
+        return compressed
 
 if __name__ == "__main__":
     s = Solution()
-    s.StringCompression("ABC")
+    print(s.StringCompression("AAABBBCCDEEEEEGGGGGGGTTUU"))
