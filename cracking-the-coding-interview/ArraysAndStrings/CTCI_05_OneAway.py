@@ -14,7 +14,8 @@ Solution 1:
     if a change is occurred - keep a check with a flag.
     if a change occurred again return false else return true if only one change.
 
-    Time Complexity 0(n) where n is the length of the smaller string.
+    Time Complexity O(n) where n is the length of the smaller string.
+    Space Complexity O(1)
 
     Test Cases
 
@@ -30,6 +31,10 @@ Solution 1:
 
 class Solution:
     def OneAway(self, s1, s2) -> bool:
+        '''
+        Time Complexity:  O(n) where n is the length of the smaller string.
+        Space Complexity: O(1)
+        '''
         if len(s2) < len(s1):
             s1,s2 = s2,s1
         if len(s2) - len(s1) > 1:
