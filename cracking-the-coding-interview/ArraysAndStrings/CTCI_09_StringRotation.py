@@ -24,11 +24,13 @@ String Rotation:
 
 class Solution:
     def StringRotation(self,s1,s2):
+        '''
+        This will not work for all the cases 
+        '''
         i=j=0
         stringIndex = None
         while i < len(s1):
             if s1[i] == s2[j%len(s2)]:
-                print(i,j,s1[i],s2[j%len(s2)])
                 if not stringIndex:
                     stringIndex = j%len(s2)
                 i+=1
@@ -41,5 +43,6 @@ class Solution:
 
 if __name__ == "__main__":
     print(Solution().StringRotation("waterbottle", "erbottlewat"))
+    print(Solution().StringRotation("abababbbaaabababababaabaabbab", "abababababaabaabbababababbbaa"))
 
         
