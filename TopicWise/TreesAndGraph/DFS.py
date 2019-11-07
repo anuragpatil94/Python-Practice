@@ -1,26 +1,24 @@
 from AdjacencyList import AdjacencyList
 import json
 
-def DFS(source,list:AdjacencyList):
-    pass
+class DFS:
+    def DFS_Visit(self, source,list,parent):
+        current = list.getVertex(source)
+        print(current,current.val)
+        while current is not None:
+            # print(current,current.val)
+            if current.val not in parent:
+                parent[current.val] = source
+                self.DFS_Visit(current.val,list,parent)
+            current=current.next
 
-def DFS_Visit(source,list,parent):
-    current = list.getVertex(source)
-    print(current,current.val)
-    while current is not None:
-        # print(current,current.val)
-        if current.val not in parent:
-            parent[current.val] = source
-            DFS_Visit(current.val,list,parent)
-        current=current.next
-
-def DFS(list):
-    parent = {}
-    for vertex in list:
-        if vertex.val not in parent:
-            parent[vertex.val] = None
-            DFS_Visit(vertex.val,list,parent)
-    return parent
+    def DFS(self, list):
+        parent = {}
+        for vertex in list:
+            if vertex.val not in parent:
+                parent[vertex.val] = None
+                self.DFS_Visit(vertex.val,list,parent)
+        return parent
 if __name__=="__main__":
     list = AdjacencyList()
     list.addVertex("a")
@@ -39,6 +37,7 @@ if __name__=="__main__":
     list.addEdge("f","f")
     print(list.print_graph())
     print("--")
+    dfs = DFS()
     # DFS_Visit("a",list)
-    parent = DFS(list)
+    parent = dfs.DFS(list)
     print(json.dumps(parent,indent=4))

@@ -1,24 +1,25 @@
 from AdjacencyList import AdjacencyList
 import json
 
-def BFS(source, list: AdjacencyList):
-    level = {source: 0}
-    parent = {source: None}
-    levelNumber = 1
-    frontier = [source]
-    while frontier:
-        next = []
-        for u in frontier:
-            current = list.getVertex(u)
-            while current is not None:
-                if current.val not in level:
-                    level[current.val] = levelNumber
-                    parent[current.val] = u
-                    next.append(current.val)
-                current = current.next
-        frontier = next
-        levelNumber+=1
-    return level,parent
+class BFS:
+    def BFS(self, source, list: AdjacencyList):
+        level = {source: 0}
+        parent = {source: None}
+        levelNumber = 1
+        frontier = [source]
+        while frontier:
+            next = []
+            for u in frontier:
+                current = list.getVertex(u)
+                while current is not None:
+                    if current.val not in level:
+                        level[current.val] = levelNumber
+                        parent[current.val] = u
+                        next.append(current.val)
+                    current = current.next
+            frontier = next
+            levelNumber+=1
+        return level,parent
 
 if __name__=="__main__":
     list = AdjacencyList()
@@ -50,6 +51,7 @@ if __name__=="__main__":
     list.addEdge("v","f")
     print(list.print_graph())
     print("--")
-    level,parent = BFS("s",list)
+    bfs = BFS()
+    level,parent = bfs.BFS("s",list)
     print(json.dumps(level,indent=4))
     print(json.dumps(parent,indent=4))
