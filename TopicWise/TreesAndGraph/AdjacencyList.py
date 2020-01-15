@@ -1,7 +1,8 @@
 class Node:
-    def __init__(self,val):
+    def __init__(self, val):
         self.val = val
         self.next = None
+
 
 class AdjacencyList:
     def __init__(self):
@@ -9,17 +10,17 @@ class AdjacencyList:
 
     def getIndex(self, index):
         return self.list[index]
-    
+
     def getVertex(self, vertex):
         for node in self.list:
             if node.val == vertex:
                 return node
-    
-    def addVertex(self,val):
+
+    def addVertex(self, val):
         newNode = Node(val)
         self.list.append(newNode)
         return newNode
-    
+
     def addEdge(self, From, To):
         edge = None
         for vertex in self.list:
@@ -36,30 +37,31 @@ class AdjacencyList:
                     current = current.next
                 current.next = edge
                 break
+
     def __iter__(self):
         self.start = 0
         return self
-    
+
     def __next__(self):
         start = self.start
         # print("len =",start, len(self.list) )
         if self.start >= len(self.list):
             raise StopIteration
-        self.start = start+1
+        self.start = start + 1
         return self.list[start]
-    
+
     def __len__(self):
         return len(self.list)
-    
-    # Function to print the graph 
-    def print_graph(self): 
-        for i in range(len(self.list)): 
-            print("head", end="") 
-            temp = self.list[i] 
-            while temp: 
-                print(" -> {}".format(temp.val), end="") 
+
+    # Function to print the graph
+    def print_graph(self):
+        for i in range(len(self.list)):
+            print("head", end="")
+            temp = self.list[i]
+            while temp:
+                print(" -> {}".format(temp.val), end="")
                 temp = temp.next
-            print(" \n") 
+            print(" \n")
 
 
 # if __name__ == "__main__":
@@ -92,5 +94,3 @@ class AdjacencyList:
 #     list.addEdge("F","G")
 #     list.addEdge("G","F")
 #     list.print_graph()
-
-
