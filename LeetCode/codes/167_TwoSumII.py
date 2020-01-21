@@ -1,4 +1,4 @@
-'''
+"""
 
 Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.
 
@@ -18,17 +18,20 @@ Idea:
    Two Pointers Approach - Since the array is sorted.
    Take a pointer from start and second from end.
 
-'''
+"""
+
+
 class Solution:
-    ''' Time Complexity is O(n) Space Complexity O(1)'''
+    """ Time Complexity is O(n) Space Complexity O(1)"""
+
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        j = len(numbers)-1
+        j = len(numbers) - 1
         i = 0
         while j > i:
-            if(numbers[i]+numbers[j] > target):
-                j-=1
-            elif(numbers[i] + numbers[j] < target):
-                i+=1
+            if numbers[i] + numbers[j] > target:
+                j -= 1
+            elif numbers[i] + numbers[j] < target:
+                i += 1
             else:
-                return [i+1,j+1]
+                return [i + 1, j + 1]
         return -1

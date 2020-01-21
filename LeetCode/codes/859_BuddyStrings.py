@@ -1,4 +1,4 @@
-'''
+"""
 Buddy String
 Given two strings A and B of lowercase letters, return true if and only if we can swap two letters in A so that the result equals B.
 
@@ -33,7 +33,8 @@ A and B consist only of lowercase letters.
 Time Complexity = O(n)
 Space Complexity = O(1)
 
-'''
+"""
+
 
 class Solution(object):
     def buddyStrings(self, A, B):
@@ -57,8 +58,9 @@ class Solution(object):
             return False
         else:
             pairs = []
-            for a,b in zip(A,B):
+            for a, b in zip(A, B):
                 if a != b:
-                    pairs.append((a,b))
-                if len(pairs) > 2: return False
+                    pairs.append((a, b))
+                if len(pairs) > 2:
+                    return False
             return len(pairs) == 2 and pairs[0] == pairs[1][::-1]

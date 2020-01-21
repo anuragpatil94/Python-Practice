@@ -1,8 +1,9 @@
 import sys
-sys.path.insert(0, '../../')
+
+sys.path.insert(0, "../../")
 from conceptual.linked_list import LinkedList
 
-'''
+"""
 Important
 2.6: Palindrome
     Implement a function to check if the linked list is the palindrome
@@ -13,28 +14,35 @@ Important
             when length is 0 the current_node will reach the middle for an even size Linkedlist and 
             when length is 1 the current_node will reach the middle for an odd size Linkedlist
         - Class Result - This is used to return 2 values and to update the values easily in the recursion.
-'''
+"""
+
+
 class Result:
     def __init__(self, node, isPalindrome):
         self.node = node
         self.isPalindrome = isPalindrome
 
     def __str__(self):
-        return "node:"+self.node.data+", isPalindrome:"+str(self.isPalindrome)
+        return "node:" + self.node.data + ", isPalindrome:" + str(self.isPalindrome)
+
 
 def checkPalindrome(l, size):
     current = l.head
     result = _isPalindrome(current, size)
-    return result.isPalindrome    
+    return result.isPalindrome
+
 
 def _isPalindrome(current, length):
-    if (length == 0):  return Result(current, True)
-    elif(length == 1): return Result(current.next, True)
+    if length == 0:
+        return Result(current, True)
+    elif length == 1:
+        return Result(current.next, True)
 
-    result = _isPalindrome(current.next, length-2)
+    result = _isPalindrome(current.next, length - 2)
 
-    if(not result.isPalindrome or result.node == None): return result
-    result.isPalindrome = (result.node.data == current.data)        #Returns False if not equal
+    if not result.isPalindrome or result.node == None:
+        return result
+    result.isPalindrome = result.node.data == current.data  # Returns False if not equal
     result.node = result.node.next
     return result
 

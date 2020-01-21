@@ -1,4 +1,4 @@
-'''
+"""
 Linked List is a data structure which is written in such a way that every node is linked to next node using a pointer. It is a data storing data structure.
 It removes the limitation of arrays of having fixed size. 
 Secondly inserting an element in array is more texpensive.
@@ -28,18 +28,21 @@ functions to implement
     the end of the list 
 13) reverse() - reverses the list 
 14) remove_value(value) - removes the first item in the list with this value
-'''
+"""
+
+
 class Node:
-    def __init__(self,data = None):
-            self.next = None
-            self.data = data 
+    def __init__(self, data=None):
+        self.next = None
+        self.data = data
+
 
 class LinkedList:
     def __init__(self):
         self.head = None
-    
+
     def size(self):
-        ''' Returns the size of the linked list. '''
+        """ Returns the size of the linked list. """
         if self.empty():
             count = 0
         else:
@@ -51,43 +54,43 @@ class LinkedList:
         return count
 
     def value_at(self, index):
-        ''' Returns the Value of the Node at certain index '''
+        """ Returns the Value of the Node at certain index """
         if self.empty():
             return "Linked List Empty"
-        
+
         idx = 1
         l = self.head
         while l.next is not None:
             if idx is index:
                 break
-            
+
             l = l.next
             idx += 1
         return l.data
-    
+
     def getNode_at(self, index):
-        ''' Returns the Node at certain index '''
+        """ Returns the Node at certain index """
         if self.empty():
             return "Linked List Empty"
-        
+
         idx = 1
         l = self.head
         while l.next is not None:
             if idx is index:
                 break
-            
+
             l = l.next
             idx += 1
         return l
 
     def empty(self):
-        ''' Return True if Empty '''
+        """ Return True if Empty """
         if self.head is None:
             return True
         return False
 
     def push(self, data):
-        ''' adds a node in the end of the linked list '''
+        """ adds a node in the end of the linked list """
         n = Node(data)
         if self.empty():
             self.head = n
@@ -98,9 +101,9 @@ class LinkedList:
             l = l.next
         l.next = n
         return
-    
+
     def push_node(self, node):
-        ''' adds a externally created node in the end of the linked list '''
+        """ adds a externally created node in the end of the linked list """
         n = node
         if self.empty():
             self.head = n
@@ -111,40 +114,40 @@ class LinkedList:
             l = l.next
         l.next = n
         return
-    
+
     def push_front(self, data):
-        ''' adds a node in the front of the linked list '''
+        """ adds a node in the front of the linked list """
         n = Node(data)
         if self.empty():
             self.head = n
             return
-        
+
         l = self.head
         self.head = n
         n.next = l
         return
-    
+
     def pop_front(self):
-        ''' Removes a node from the front of the linked list and returns the removed element '''
+        """ Removes a node from the front of the linked list and returns the removed element """
         if self.empty():
             return "Linked List is Empty"
-        
+
         h = self.head
         if h.next is None:
             self.head = None
             return h.data
-        
+
         self.head = h.next
         return h.data
-        
+
     def pop_back(self):
-        ''' This will remove a node from the back of the LinkedList and returns the popped element '''
+        """ This will remove a node from the back of the LinkedList and returns the popped element """
         if self.empty():
             return "Empty Linked List"
-        
+
         h = self.head
         while h is not None:
-            if(h.next.next is None):
+            if h.next.next is None:
                 data = h.next.data
                 h.next = None
                 break
@@ -152,24 +155,24 @@ class LinkedList:
         return data
 
     def front(self):
-        ''' Returns head of the Linked List '''
-        if(self.empty()):
+        """ Returns head of the Linked List """
+        if self.empty():
             return "Linked List is Empty"
         return self.head.data
 
     def back(self):
-        ''' Returns last Element of the Linked List '''
+        """ Returns last Element of the Linked List """
         if self.empty():
             return "Linked List is Empty"
-        
+
         h = self.head
         while h.next is not None:
             h = h.next
 
         return h.data
-    
+
     def insert(self, index, data):
-        ''' Inserts a Value at given Index '''
+        """ Inserts a Value at given Index """
 
         n = Node(data)
 
@@ -180,7 +183,7 @@ class LinkedList:
         size = self.size()
 
         if index > size:
-            print ("Size of the Linked List is less than the index")
+            print("Size of the Linked List is less than the index")
             return
 
         if index is size:
@@ -202,22 +205,22 @@ class LinkedList:
             idx += 1
             previous = h
             h = h.next
-        
+
     def erase(self, index):
-        ''' removes node at a given index and returns the value removed '''
+        """ removes node at a given index and returns the value removed """
         if self.empty():
             return "Linked List is empty"
         size = self.size()
         if index > size - 1:
             return "Size of the Linked List is less than the index"
-        
+
         idx = 0
         h = self.head
         previous = self.head
         while h.next is not None:
             if idx is index:
                 if previous is h:
-                    data =h.data
+                    data = h.data
                     self.head = h.next
                     return data
                 else:
@@ -226,16 +229,16 @@ class LinkedList:
                     h = None
                     return data
             idx += 1
-            previous = h 
+            previous = h
             h = h.next
-        
+
         # Pop the last element
         data = previous.data
         previous.next = None
         return data
 
     def value_n_from_end(self, n):
-        ''' returns the value of nth position from the end of the list, where n is the Index string from 0. Hence 0th element is the last element '''
+        """ returns the value of nth position from the end of the list, where n is the Index string from 0. Hence 0th element is the last element """
         size = self.size()
         if n < 0:
             return "The value passed cannot be negative"
@@ -253,7 +256,7 @@ class LinkedList:
         #     idx += 1
         #     h = h.next
 
-        # BETTER SOLUTION - O(n) Time and O(m) Space 
+        # BETTER SOLUTION - O(n) Time and O(m) Space
         # BEST SOLUTION - Check Cracking the Coding Interview Q-2.2
         arr = list()
         while h is not None:
@@ -264,7 +267,7 @@ class LinkedList:
         return arr[0]
 
     def reverse(self):
-        ''' Reverses the Linked List '''
+        """ Reverses the Linked List """
 
         h = self.head
         previous = None
@@ -278,9 +281,9 @@ class LinkedList:
 
         # self.head.next = h
         # pass
-    
+
     def remove_value(self, value):
-        ''' Matches the Value and removes the first occurrence of it from the Linked List and returns the index '''
+        """ Matches the Value and removes the first occurrence of it from the Linked List and returns the index """
         if self.empty():
             return "Linked List is empty"
         h = self.head
@@ -298,36 +301,39 @@ class LinkedList:
             idx += 1
             previous = h
             h = h.next
-            
+
         pass
 
     def show(self):
-        ''' Shows Linked List Representation for current Linked List '''
+        """ Shows Linked List Representation for current Linked List """
         if self.empty():
             return "Linked List is Empty"
 
         l = self.head
         while l is not None:
-            print(l.data , end =  " ----> ")
+            print(l.data, end=" ----> ")
             l = l.next
         print()
         return
+
     def showListFromNode(self, node):
-        ''' Shows Linked List Representation for current Linked List '''
+        """ Shows Linked List Representation for current Linked List """
         if self.empty():
             return "Linked List is Empty"
 
         l = node
         while l is not None:
-            print(l.data , end =  " ----> ")
+            print(l.data, end=" ----> ")
             l = l.next
         print()
         return
-        
+
 
 if __name__ == "__main__":
     l = LinkedList()
-    print("----------------------------------------------------------------------------------")
+    print(
+        "----------------------------------------------------------------------------------"
+    )
     print("Push and Pop")
     l.push(2)
     l.push(3)
@@ -341,50 +347,54 @@ if __name__ == "__main__":
     l.push_front(10)
     l.push_front(81)
 
-
     l.show()
     print("Size of LinkedList: ", l.size())
-    print("Value at 5th Position: ",l.value_at(5))
+    print("Value at 5th Position: ", l.value_at(5))
 
-    
     print("Element Popped from Front:", l.pop_front())
     print("Element Popped from Back:", l.pop_back())
 
     l.show()
     print("Size of LinkedList: ", l.size())
-    print("Value at 5th Position: ",l.value_at(5))
-    print("front: ",l.front(), "back: ", l.back())
-    print("----------------------------------------------------------------------------------")
+    print("Value at 5th Position: ", l.value_at(5))
+    print("front: ", l.front(), "back: ", l.back())
+    print(
+        "----------------------------------------------------------------------------------"
+    )
     print("Insert")
-    l.insert(0,12)
+    l.insert(0, 12)
     print("Inserting 12 at 0th position")
     l.show()
-    
-    l.insert(4,19)
+
+    l.insert(4, 19)
     print("Inserting 19 at 4th position")
     l.show()
-    
+
     size = l.size()
-    l.insert(size,20)
+    l.insert(size, 20)
     print("Inserting 20 at last position")
-    l.insert(17,21)
+    l.insert(17, 21)
     l.show()
-    
+
     print("Size of LinkedList: ", l.size())
-    print("----------------------------------------------------------------------------------")
+    print(
+        "----------------------------------------------------------------------------------"
+    )
     print("Erase")
-    print("Erased Index 0: ",l.erase(0))
+    print("Erased Index 0: ", l.erase(0))
     l.show()
 
-    print("Erased Index 4: ",l.erase(4))
+    print("Erased Index 4: ", l.erase(4))
     l.show()
-    
+
     size = l.size()
-    print("Erased Index size: ",l.erase(size-1))
+    print("Erased Index size: ", l.erase(size - 1))
     l.show()
     print("Size of LinkedList: ", l.size())
 
-    print("----------------------------------------------------------------------------------")
+    print(
+        "----------------------------------------------------------------------------------"
+    )
     print("nth value from end")
     l.show()
     size = l.size()
@@ -393,14 +403,18 @@ if __name__ == "__main__":
     print("1st Element from end", l.value_n_from_end(1))
     print("last Element from end", l.value_n_from_end(size))
 
-    print("----------------------------------------------------------------------------------")
+    print(
+        "----------------------------------------------------------------------------------"
+    )
     print("Remove Value")
     l.show()
     index = l.remove_value(2)
     print("Index of removed value:", index)
     l.show()
 
-    print("----------------------------------------------------------------------------------")
+    print(
+        "----------------------------------------------------------------------------------"
+    )
     print("Reverse")
     l.push(8)
     l.reverse()

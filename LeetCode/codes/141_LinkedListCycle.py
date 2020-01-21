@@ -1,4 +1,4 @@
-'''
+"""
 
 Given a linked list, determine if it has a cycle in it.
 
@@ -33,21 +33,24 @@ Follow up:
 
 Can you solve it using O(1) (i.e. constant) memory?
 
-'''
+"""
+
 
 class ListNode(object):
     def __init__(self, x):
         self.val = x
         self.next = None
 
+
 class Solution(object):
-    ''' Time O(n) Space O(1) '''
+    """ Time O(n) Space O(1) """
+
     def hasCycle(self, head):
         if not head:
             return False
         slow = head
         fast = head.next
-        
+
         while fast and fast.next:
             if fast == slow:
                 return True

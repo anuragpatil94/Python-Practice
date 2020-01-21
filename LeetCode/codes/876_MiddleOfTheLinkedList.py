@@ -1,4 +1,4 @@
-'''
+"""
 Given a non-empty, singly linked list with head node head, return a middle node of linked list.
 
 If there are two middle nodes, return the second middle node.
@@ -23,18 +23,18 @@ Note:
 
 The number of nodes in the given list will be between 1 and 100.
 
-'''
+"""
+
 
 class Solution:
     def middleNode(self, head: ListNode) -> ListNode:
         slow = head
         fast = head
-        
-        if(head is None):
+
+        if head is None:
             return None
-        
-        while fast is not None and fast.next is not None :
+
+        while fast is not None and fast.next is not None:
             slow = slow.next
             fast = fast.next.next
         return slow
-        

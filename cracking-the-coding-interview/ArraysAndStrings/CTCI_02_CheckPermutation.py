@@ -1,4 +1,4 @@
-'''
+"""
 Check Permutation: Given two strings, write a method to decide if one is a permutation of the other. 
 
 Solution 1: 
@@ -14,38 +14,39 @@ Solution 1:
     Time Complexity  O(n) 
     Space Complexity O(n)
     
-'''
+"""
+
 
 class Solution:
-    def checkPermutation(s1,s2):
-        '''
+    def checkPermutation(s1, s2):
+        """
         Time Complexity: O(n)
         Space Complexity: O(n)
-        '''
+        """
         if len(s1) != len(s2):
             return False
-        
+
         countMap = {}
         uniqueCount = 0
 
         for char in s1:
             if char in countMap:
-                countMap[char]+=1
+                countMap[char] += 1
             else:
                 countMap[char] = 1
-                uniqueCount+=1
+                uniqueCount += 1
         for char in s2:
             if char in countMap:
                 if countMap[char] - 1 == 0:
-                    uniqueCount -=1
+                    uniqueCount -= 1
                     countMap.pop(char)
-                elif countMap[char] - 1  < 0:
+                elif countMap[char] - 1 < 0:
                     return False
                 else:
                     countMap[char] -= 1
             else:
                 return False
-        
+
         if uniqueCount == 0:
             return True
         else:

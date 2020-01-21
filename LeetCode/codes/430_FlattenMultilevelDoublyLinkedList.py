@@ -4,8 +4,10 @@ class Node:
         self.prev = prev
         self.next = next
         self.child = child
+
+
 class Solution:
-    def flatten(self, head: 'Node') -> 'Node':
+    def flatten(self, head: "Node") -> "Node":
         if not head:
             return head
         current = head
@@ -19,10 +21,10 @@ class Solution:
                 current.child = None
             else:
                 if not current.next:
-                    if(len(l)):
+                    if len(l):
                         current.next = l.pop()
                         current.next.prev = current
                     else:
                         break
             current = current.next
-        return head      
+        return head

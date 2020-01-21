@@ -1,4 +1,4 @@
-'''
+"""
 One Away: There are three types of edits that can be performed on strings: insert a character, remove a character, or replace a character. 
 Given two strings, write a function to check if they are one edit (or zero edits) away. 
 
@@ -27,18 +27,19 @@ Solution 1:
     def test_OneReplace()
     def test_Same()
     def test_MoreThanOneChange()
-'''
+"""
+
 
 class Solution:
     def OneAway(self, s1, s2) -> bool:
-        '''
+        """
         Time Complexity:  O(n) where n is the length of the smaller string.
         Space Complexity: O(1)
-        '''
+        """
         if len(s2) < len(s1):
-            s1,s2 = s2,s1
+            s1, s2 = s2, s1
         if len(s2) - len(s1) > 1:
-            return False 
+            return False
         same = 0
         if len(s1) == len(s2):
             same = 1
@@ -46,11 +47,11 @@ class Solution:
         change = 0
         for index in range(len(s1)):
             if s1[index1] == s2[index2]:
-                index2+=1
-                index1+=1
+                index2 += 1
+                index1 += 1
             else:
                 if not change:
-                    change+=1
+                    change += 1
                     if same:
                         index1 += 1
                     index2 += 1
@@ -62,10 +63,7 @@ class Solution:
 if __name__ == "__main__":
     s = Solution()
 
-    l = [ ["pale", "ple" ],
-    ["pales", "pale" ],
-    ["pale", "bale"  ],
-    ["pale", "bake"]]
+    l = [["pale", "ple"], ["pales", "pale"], ["pale", "bale"], ["pale", "bake"]]
 
     for x in l:
-        print(s.OneAway(x[0],x[1]))
+        print(s.OneAway(x[0], x[1]))

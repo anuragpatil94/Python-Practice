@@ -1,4 +1,4 @@
-'''
+"""
 
 Given a singly linked list, group all odd nodes together followed by the even nodes. Please note here we are talking about the node number and not the value in the nodes.
 
@@ -21,11 +21,14 @@ Idea:
 We need 3 pointers for this one for odd list, 
 2nd for even list and 3rd to keep track of even head
 
-'''
+"""
+
+
 class ListNode(object):
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 class Solution(object):
     def oddEvenList(self, head):
@@ -37,11 +40,11 @@ class Solution(object):
             return head
         if not head.next:
             return head
-        
+
         odd = head
         even = head.next
         evenStart = head.next
-        
+
         while odd and odd.next:
             if odd and odd.next:
                 odd.next = odd.next.next
@@ -51,11 +54,10 @@ class Solution(object):
                 even.next = even.next.next
                 even = even.next
         odd.next = evenStart
-        
+
         return head
 
-
-        '''
+        """
         More Better Way
         - Same Logic but less number of steps
         
@@ -65,4 +67,4 @@ class Solution(object):
             even.next = odd.next;
             even = even.next;
         }
-        '''
+        """

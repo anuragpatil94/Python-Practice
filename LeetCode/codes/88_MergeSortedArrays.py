@@ -1,4 +1,4 @@
-'''
+"""
 Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
 
 Note:
@@ -16,7 +16,9 @@ Output: [1,2,2,3,5,6]
 Idea: 
 
 Here the idea is to go from back of the array and start comparing and replace 0 in nums1 based on that
-'''
+"""
+
+
 class Solution:
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """
@@ -25,16 +27,16 @@ class Solution:
         l1 = m
         l2 = n
         while n > 0 and m > 0:
-            if nums2[n-1] > nums1[m-1]:
-                nums1[(m+n)-1] = nums2[n-1]
-                n-=1
+            if nums2[n - 1] > nums1[m - 1]:
+                nums1[(m + n) - 1] = nums2[n - 1]
+                n -= 1
             else:
-                nums1[(m+n)-1] = nums1[m-1]
-                m-=1
+                nums1[(m + n) - 1] = nums1[m - 1]
+                m -= 1
         while m > 0:
-            nums1[(m+n)-1] = nums1[m-1]
-            m-=1
-            
+            nums1[(m + n) - 1] = nums1[m - 1]
+            m -= 1
+
         while n > 0:
-            nums1[(m+n)-1] = nums2[n-1]
-            n-=1
+            nums1[(m + n) - 1] = nums2[n - 1]
+            n -= 1

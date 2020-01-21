@@ -1,8 +1,9 @@
 import sys
-sys.path.insert(0, '../../')
+
+sys.path.insert(0, "../../")
 from conceptual.linked_list import LinkedList
 
-'''
+"""
 Important
 2.7. Intersection
 Given two linked lists, determine if the two lists intersect. Return the intersecting node, 
@@ -15,24 +16,25 @@ traverse from both list and at the end of the list jump to the next list.
 
 TIME COMPLEXITY: O(n+m) where n and m are length of the list
 SPACE COMPLEXITY: O(1)
-'''
+"""
 
-def intersection(l1,l2):
+
+def intersection(l1, l2):
     curr1 = l1
     curr2 = l2
-    cycle1,cycle2 = 0,0
-    while cycle1 < 2 or cycle2<2:
-        if(curr1 is curr2):
+    cycle1, cycle2 = 0, 0
+    while cycle1 < 2 or cycle2 < 2:
+        if curr1 is curr2:
             return curr1.data
-        if(curr1.next is None): 
-            cycle1+=1
+        if curr1.next is None:
+            cycle1 += 1
             curr1 = l2
         else:
             curr1 = curr1.next
-        if(curr2.next is None):
-            cycle1+=1
+        if curr2.next is None:
+            cycle1 += 1
             curr2 = l1
-        else: 
+        else:
             curr2 = curr2.next
     return -1
     pass
@@ -51,15 +53,14 @@ if __name__ == "__main__":
     l1.push("6")
     l1.push("7")
 
-    l2 = LinkedList()    
+    l2 = LinkedList()
     l2.push("8")
     l2.push("9")
     l2.push_node(inter)
 
     l1.show()
     l2.show()
-    print(intersection(l1.head,l2.head))
-
+    print(intersection(l1.head, l2.head))
 
     l1 = LinkedList()
     l1.push("1")
@@ -71,7 +72,7 @@ if __name__ == "__main__":
     l1.push("6")
     l1.push("7")
 
-    l2 = LinkedList()    
+    l2 = LinkedList()
     l2.push("8")
     l2.push("9")
     l2.push("10")
@@ -80,4 +81,4 @@ if __name__ == "__main__":
     l1.show()
     l2.show()
 
-    print(intersection(l1.head,l2.head))
+    print(intersection(l1.head, l2.head))

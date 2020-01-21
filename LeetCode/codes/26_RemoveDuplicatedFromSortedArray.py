@@ -1,4 +1,4 @@
-'''
+"""
 Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.
 
 Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
@@ -33,7 +33,8 @@ int len = removeDuplicates(nums);
 for (int i = 0; i < len; i++) {
     print(nums[i]);
 }
-'''
+"""
+
 
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
@@ -42,10 +43,10 @@ class Solution:
         for index, num in enumerate(nums):
             if last is None:
                 last = num
-                j+=1
+                j += 1
             elif last != num:
                 last = num
                 if index is not j:
                     nums[j] = num
-                j+=1
+                j += 1
         return j

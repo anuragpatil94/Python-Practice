@@ -1,4 +1,4 @@
-'''
+"""
 
 Palindrome Permutation: Given a string, write a function to check if it is a permutation of a palindrome. 
 A palindrome is a word or phrase that is the same forwards and backwards. A permutation is a rearrangement of letters. 
@@ -18,7 +18,8 @@ Solution 2:
 
 Assuming that the string only contains a-zA-Z
     
-'''
+"""
+
 
 class Solution:
     def PalindromePermutation(self, string):
@@ -26,7 +27,7 @@ class Solution:
         if string is None:
             return None
         for char in string:
-            if char is None or (' ' in char):
+            if char is None or (" " in char):
                 continue
             charInt = self.getOrd(ord(char))
             vector ^= 1 << charInt
@@ -39,7 +40,7 @@ class Solution:
             return True
 
     def getOrd(self, charInt):
-        if (charInt >=65 and charInt <=90 ):
+        if charInt >= 65 and charInt <= 90:
             return 26 + (charInt - ord("A"))
         else:
             return charInt - ord("a")

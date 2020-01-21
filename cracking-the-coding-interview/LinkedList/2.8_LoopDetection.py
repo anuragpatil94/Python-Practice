@@ -1,7 +1,9 @@
 import sys
-sys.path.insert(0, '../../')
+
+sys.path.insert(0, "../../")
 from conceptual.linked_list import LinkedList
-'''
+
+"""
 
 2.8 Loop Detection: 
 Given a circular linked list, implement an algorithm that returns the node at the beginning of the loop. 
@@ -22,13 +24,14 @@ SPACE COMPLEXITY O(n)`
 Solution 2:
 This is using Fast Pointer and Slow Pointer
 
-''' 
+"""
+
 
 def Solution1(head):
     s = set()
     current = head
 
-    while(current.next is not None):
+    while current.next is not None:
         if current not in s:
             s.add(current)
         else:
@@ -36,6 +39,7 @@ def Solution1(head):
         current = current.next
     return -1
     pass
+
 
 def Solution2(head):
     # This is using fast and slow pointer
@@ -51,13 +55,14 @@ def Solution2(head):
         if s is f:
             s = head
             break
-    
+
     while s and f:
         if s == f:
             return s.data
         s = s.next
         f = f.next
     return -1
+
 
 if __name__ == "__main__":
     l = LinkedList()

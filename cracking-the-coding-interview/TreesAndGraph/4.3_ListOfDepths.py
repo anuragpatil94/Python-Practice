@@ -42,7 +42,8 @@ def listOfDepths(root):
     return d
     pass
 
-def addToD(d, level,value):
+
+def addToD(d, level, value):
     if level not in d:
         d[level] = ListNode(value)
     else:
@@ -50,6 +51,7 @@ def addToD(d, level,value):
         while current.next is not None:
             current = current.next
         current.next = ListNode(value)
+
 
 if __name__ == "__main__":
     a = TreeNode(1)
@@ -79,8 +81,8 @@ if __name__ == "__main__":
     y = listOfDepths(root)
     for key in y:
         x = y[key]
-        print(key, end = " - ")
+        print(key, end=" - ")
         while x is not None:
-            print(x.data, end = " , ")
+            print(x.data, end=" , ")
             x = x.next
         print()

@@ -3,6 +3,7 @@ class TrieNode:
         self.data = data
         self.stop = stop
 
+
 class Trie:
     def __init__(self):
         self.root = TrieNode()
@@ -16,6 +17,7 @@ class Trie:
             current = current.data[letter]
             last = letter
         current.data[letter].stop = True
+
     def search(self, string):
         current = self.root
         last = None
@@ -31,7 +33,7 @@ class Trie:
         pass
 
     def startsWith(self, string):
-        
+
         pass
 
 

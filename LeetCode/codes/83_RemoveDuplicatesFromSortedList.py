@@ -1,4 +1,4 @@
-'''
+"""
 
 Given a sorted linked list, delete all duplicates such that each element appear only once.
 
@@ -22,26 +22,29 @@ Test Cases:
 Missed Testcase:
  1) Empty List
 
-'''
+"""
+
 
 class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
 
+
 class Solution:
-    ''' Time O(n) Space O(1) '''
+    """ Time O(n) Space O(1) """
+
     def deleteDuplicates(self, head: ListNode) -> ListNode:
         curr = head
         firstDuplicateNode = None
         while curr and curr.next:
             if not firstDuplicateNode and curr.val == curr.next.val:
                 firstDuplicateNode = curr
-            elif(firstDuplicateNode and curr.val != curr.next.val):
+            elif firstDuplicateNode and curr.val != curr.next.val:
                 firstDuplicateNode.next = curr.next
                 firstDuplicateNode = None
             curr = curr.next
-        
+
         if firstDuplicateNode:
             firstDuplicateNode.next = None
         return head

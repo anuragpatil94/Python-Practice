@@ -39,4 +39,3 @@ class DynamicArray:
 
     def __len__(self):
         return self.size
-

@@ -1,4 +1,4 @@
-'''
+"""
 Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
 
 Symbol       Value
@@ -40,24 +40,16 @@ Example 5:
 Input: "MCMXCIV"
 Output: 1994
 Explanation: M = 1000, CM = 900, XC = 90 and IV = 4.
-'''
+"""
+
 
 class Solution:
     def romanToInt(self, s: str) -> int:
-        mapping = {
-            "I": 1,
-            "V": 5,
-            "X": 10,
-            "L": 50,
-            "C": 100,
-            "D": 500,
-            "M": 1000
-        }
+        mapping = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
         sum = 0
-        for index in range(len(s)-1,-1,-1):
-            if (index != len(s)-1 and mapping[s[index]] < mapping[s[index + 1]]):
+        for index in range(len(s) - 1, -1, -1):
+            if index != len(s) - 1 and mapping[s[index]] < mapping[s[index + 1]]:
                 sum -= mapping[s[index]]
             else:
                 sum += mapping[s[index]]
         return sum
-                

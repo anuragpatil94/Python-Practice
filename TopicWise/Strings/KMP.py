@@ -48,4 +48,3 @@ if __name__ == "__main__":
     arr = [["fjhaoiweyribkcvnkasdfhuoeafiasodjfknlvnkzjflajsohguosahnbf", "asodjf"]]
     for test in arr:
         print(test[0], test[1], kmp.strStr(test[0], test[1]))
-

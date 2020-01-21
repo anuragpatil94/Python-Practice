@@ -1,4 +1,4 @@
-'''
+"""
 3.4:  Queue via Stacks: 
         Implement a MyQueue class which implements a queue using two stacks.
 
@@ -17,44 +17,49 @@
 	
 	Space Complexity:
 		Other than the space for Stack1 and Stack2 its O(1)
-'''
+"""
+
 
 class QueueWithTwoStacks:
-	def __init__(self):
-		self.stack1 = []
-		self.stack2 = []
-	def push(self,data):
-		self.stack1.append(data)
-	def pop(self):
-		if len(self.stack2) == 0:
-			if len(self.stack1) != 0:
-				for num in self.stack1[::-1]:
-					self.pushStack2(self.popStack1())
-			else:
-				return "No More Elements"
-		return self.stack2.pop()
-	def pushStack2(self,num):
-		self.stack2.append(num)
-	def popStack1(self):
-		return self.stack1.pop()
+    def __init__(self):
+        self.stack1 = []
+        self.stack2 = []
+
+    def push(self, data):
+        self.stack1.append(data)
+
+    def pop(self):
+        if len(self.stack2) == 0:
+            if len(self.stack1) != 0:
+                for num in self.stack1[::-1]:
+                    self.pushStack2(self.popStack1())
+            else:
+                return "No More Elements"
+        return self.stack2.pop()
+
+    def pushStack2(self, num):
+        self.stack2.append(num)
+
+    def popStack1(self):
+        return self.stack1.pop()
 
 
 if __name__ == "__main__":
-	q = QueueWithTwoStacks()
-	q.push(1)
-	q.push(2)
-	q.push(3)
-	q.push(4)
-	q.push(5)
-	print(q.stack1,q.stack2)
-	print(q.pop())
-	print(q.stack1,q.stack2)
-	q.push(6)
-	q.push(7)
-	print(q.pop())
-	print(q.stack1,q.stack2)
-	print(q.pop())
-	print(q.pop())
-	print(q.pop())
-	print(q.pop())
-	print(q.stack1,q.stack2)
+    q = QueueWithTwoStacks()
+    q.push(1)
+    q.push(2)
+    q.push(3)
+    q.push(4)
+    q.push(5)
+    print(q.stack1, q.stack2)
+    print(q.pop())
+    print(q.stack1, q.stack2)
+    q.push(6)
+    q.push(7)
+    print(q.pop())
+    print(q.stack1, q.stack2)
+    print(q.pop())
+    print(q.pop())
+    print(q.pop())
+    print(q.pop())
+    print(q.stack1, q.stack2)

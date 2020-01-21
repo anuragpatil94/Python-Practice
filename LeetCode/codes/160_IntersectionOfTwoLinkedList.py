@@ -1,12 +1,14 @@
-'''
+"""
 Write a program to find the node at which the intersection of 
 two singly linked lists begins.
-'''
+"""
+
 
 class ListNode(object):
     def __init__(self, x):
         self.val = x
         self.next = None
+
 
 class Solution(object):
     def getIntersectionNode(self, headA, headB):
@@ -27,11 +29,11 @@ class Solution(object):
                 return currA
             if not currA.next:
                 currA = headB
-                tA+=1
+                tA += 1
             else:
                 currA = currA.next
             if not currB.next:
                 currB = headA
-                tB+=1
+                tB += 1
             else:
                 currB = currB.next

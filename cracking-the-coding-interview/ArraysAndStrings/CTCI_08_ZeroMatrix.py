@@ -1,4 +1,4 @@
-'''
+"""
 
 Zero Matrix: Write an algorithm such that if an element in an MxN matrix is 0, its entire row and column are set to 0. 
 
@@ -15,13 +15,13 @@ Book Solution.
 
     Time Complexity(O(m*n))
     Space Complexity (O(1))
-'''
+"""
 
 
 class Solution:
     def ZeroMatrix(self, arr):
-        xlist= set()
-        ylist= set()
+        xlist = set()
+        ylist = set()
 
         for y in range(len(arr)):
             for x in range(len(arr[0])):
@@ -32,12 +32,12 @@ class Solution:
             index = 0
             while index < len(arr):
                 arr[index][num] = 0
-                index+=1
+                index += 1
         for num in ylist:
             index = 0
             while index < len(arr[0]):
                 arr[num][index] = 0
-                index+=1
+                index += 1
         return arr
 
     def ZeroMatrix_BS(self, arr):
@@ -56,9 +56,16 @@ class Solution:
         return arr
 
 
-
 if __name__ == "__main__":
-    print([[1,1,1,1],[1,1,1,1],[1,0,1,1],[1,0,1,1],[1,1,1,1]])
-    print(Solution().ZeroMatrix([[1,1,1,1],[1,1,1,1],[1,0,1,1],[1,0,1,1],[1,1,1,1]]))
+    print([[1, 1, 1, 1], [1, 1, 1, 1], [1, 0, 1, 1], [1, 0, 1, 1], [1, 1, 1, 1]])
+    print(
+        Solution().ZeroMatrix(
+            [[1, 1, 1, 1], [1, 1, 1, 1], [1, 0, 1, 1], [1, 0, 1, 1], [1, 1, 1, 1]]
+        )
+    )
     print("---")
-    print(Solution().ZeroMatrix_BS([[1,1,1,1],[1,1,1,1],[1,0,1,1],[1,0,1,1],[1,1,1,1]]))
+    print(
+        Solution().ZeroMatrix_BS(
+            [[1, 1, 1, 1], [1, 1, 1, 1], [1, 0, 1, 1], [1, 0, 1, 1], [1, 1, 1, 1]]
+        )
+    )

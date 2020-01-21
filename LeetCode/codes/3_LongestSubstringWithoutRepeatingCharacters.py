@@ -1,4 +1,4 @@
-'''
+"""
 Given a string, find the length of the longest substring without repeating characters.
 
 Example 1:
@@ -17,9 +17,9 @@ Input: "pwwkew"
 Output: 3
 Explanation: The answer is "wke", with the length of 3. 
              Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
-'''
+"""
 
-'''
+"""
 This question is again an example of sliding window problems. and is similar to LeetCode-Problem76
 
 Algorithm:
@@ -32,23 +32,25 @@ Algorithm:
  - Now, again repeat from step 2 until the end of string.
 
  The Time Complexity here is O(n) and not O(n²) because at a time only one pointer is moving. So both the pointer only traverse once. Hence it O(2n) ---> O(n)
-'''
+"""
+
 
 class Solution:
-    ''' The Time Complexity of this algorithm is O(n) where n is the length of string and the space complexity is O(n) for the set() created. '''
+    """ The Time Complexity of this algorithm is O(n) where n is the length of string and the space complexity is O(n) for the set() created. """
+
     def lengthOfLongestSubstring(self, s: str) -> int:
         unique = set()
         x = 0
         y = 0
         store = 0
-        
-        if len(s) == 1: 
+
+        if len(s) == 1:
             return 1
-        
+
         for y in range(len(s)):
             if s[y] not in unique:
                 unique.add(s[y])
-                store = (y-x+1) if (y-x+1) > store else store
+                store = (y - x + 1) if (y - x + 1) > store else store
             else:
                 found = 0
                 while found == 0:
@@ -56,7 +58,7 @@ class Solution:
                         found = 1
                     else:
                         unique.remove(s[x])
-                    x+=1
+                    x += 1
         return store
 
     def lengthOfLongestSubstringUsingBooleanList(self, s: str) -> int:
@@ -64,14 +66,14 @@ class Solution:
         x = 0
         y = 0
         store = 0
-        
-        if len(s) == 1: 
+
+        if len(s) == 1:
             return 1
-        
+
         for y in range(len(s)):
-            if unique[self.getOrdEquivalent(s[y])]==0:
+            if unique[self.getOrdEquivalent(s[y])] == 0:
                 unique[self.getOrdEquivalent(s[y])] = 1
-                store = (y-x+1) if (y-x+1) > store else store
+                store = (y - x + 1) if (y - x + 1) > store else store
             else:
                 found = 0
                 while found == 0:
@@ -79,9 +81,11 @@ class Solution:
                         found = 1
                     else:
                         unique[self.getOrdEquivalent(s[x])] = 0
-                    x+=1
+                    x += 1
         return store
-    
+
     def getOrdEquivalent(letter):
-        if(ord(letter) >= 97): return 26 + (ord(letter) - ord('a'))
-        if(ord(letter) >= 65): return (ord(letter) - ord('A'))
+        if ord(letter) >= 97:
+            return 26 + (ord(letter) - ord("a"))
+        if ord(letter) >= 65:
+            return ord(letter) - ord("A")

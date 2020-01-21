@@ -1,4 +1,4 @@
-'''
+"""
 Reverse a singly linked list.
 
 Example:
@@ -10,7 +10,7 @@ Follow up:
 A linked list can be reversed either iteratively or recursively. 
 Could you implement both?
 
-'''
+"""
 
 
 class ListNode:
@@ -18,12 +18,13 @@ class ListNode:
         self.val = x
         self.next = None
 
+
 class Solution:
     def reverseList(self, head: ListNode) -> ListNode:
-        '''
+        """
         Time Complexity:O(n)
         Space Complexity:O(1)
-        '''
+        """
         prev = None
         current = head
         nextNode = None
@@ -36,5 +37,5 @@ class Solution:
             current.next = prev
             prev = current
             current = nextNode
-        current.next =prev
+        current.next = prev
         return current

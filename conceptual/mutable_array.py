@@ -4,7 +4,7 @@ from array import array
 class MutableArray:
     def __init__(self, capacity):
         self.cap = capacity
-        self.arr = array('b', [] * capacity)
+        self.arr = array("b", [] * capacity)
 
     def size(self):
         return len(self.arr)
@@ -29,6 +29,7 @@ class MutableArray:
             self.push(val)
 
         print(self.arr)
+
 
 if __name__ == "__main__":
     mutable = MutableArray(10)

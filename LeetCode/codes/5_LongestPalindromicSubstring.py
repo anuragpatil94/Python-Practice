@@ -4,7 +4,7 @@ class Solution:
         ls = len(s)
         if ls == 0:
             return ""
-        
+
         print(s)
         # return
         current = 0
@@ -40,12 +40,18 @@ class Solution:
             # if current == 3:
             #     break
             offset = 1
-            print(current,offset,left,right)
+            print(current, offset, left, right)
             # print(type(current), type(s[current - offset]))
             # Find Next Current
             while current - offset >= left and current - offset <= right:
-                print("in",current,offset,array[current - offset]//2,array[current - offset])
-                if (current + offset + array[current - offset]//2) == right:
+                print(
+                    "in",
+                    current,
+                    offset,
+                    array[current - offset] // 2,
+                    array[current - offset],
+                )
+                if (current + offset + array[current - offset] // 2) == right:
                     # print("-")
                     array[current + offset] = array[current - offset]
                     current = current + offset
@@ -67,21 +73,20 @@ class Solution:
                 current = right + 1
             elif flag:
                 break
-        print(max,maxIndex)
+        print(max, maxIndex)
         ans = ""
         compressed = "".join(s.split("$"))
-#         Test Here 
+        #         Test Here
 
         for i in range(len(array)):
             if max == array[i]:
-                x ="".join(s[(i - (max // 2)) : (i + (max // 2) + 1)].split("$"))
+                x = "".join(s[(i - (max // 2)) : (i + (max // 2) + 1)].split("$"))
                 if len(x) > len(ans):
                     ans = x
-        
-        print(list(s))
-        print(list(map(lambda x:str(x),array)))
-        return ans
 
+        print(list(s))
+        print(list(map(lambda x: str(x), array)))
+        return ans
 
 
 if __name__ == "__main__":

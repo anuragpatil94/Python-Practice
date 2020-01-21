@@ -1,9 +1,10 @@
 import sys
-sys.path.insert(0, '../../')
+
+sys.path.insert(0, "../../")
 
 from conceptual.linked_list import LinkedList
 
-'''
+"""
     2.3 Delete Middle Node: Implement an algorithm to delete a node in the middle 
     (i.e., any node but the first and last node, not necessarily the exact middle) 
     of a singly linked list, given only access to that node. 
@@ -12,7 +13,7 @@ from conceptual.linked_list import LinkedList
     copy the data of next node to current node and in the end delete the last node.
 
     Solution 2 - Just Change the next pointer to next to next pointer 
-'''
+"""
 
 
 def delete_middle_node(delNode):
@@ -24,14 +25,16 @@ def delete_middle_node(delNode):
 
     pass
 
+
 def delete_middle_node_bs(delNode):
     if delNode is None or delNode.next is None:
         return False
-    
+
     delNode.data = delNode.next.data
     delNode.next = delNode.next.next
 
     return True
+
 
 if __name__ == "__main__":
     linked_list = LinkedList()
@@ -41,7 +44,7 @@ if __name__ == "__main__":
     linked_list.push("d")
     linked_list.push("e")
     linked_list.push("f")
-    
+
     current = linked_list.head
     while current is not None:
         if current.data == "c":
@@ -51,7 +54,6 @@ if __name__ == "__main__":
     delete_middle_node(current)
     linked_list.show()
 
-
     print("BOOK SOLUTION")
     linked_list = LinkedList()
     linked_list.push("a")
@@ -60,7 +62,7 @@ if __name__ == "__main__":
     linked_list.push("d")
     linked_list.push("e")
     linked_list.push("f")
-    
+
     current = linked_list.head
     while current is not None:
         if current.data == "c":

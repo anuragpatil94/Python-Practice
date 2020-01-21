@@ -1,4 +1,4 @@
-'''
+"""
 Given a linked list, rotate the list to the right by k places, where k is non-negative.
 
 Example 1:
@@ -19,30 +19,31 @@ Example 2:
         rotate 3 steps to the right: 0->1->2->NULL
         rotate 4 steps to the right: 2->0->1->NULL
 
-'''
+"""
+
 
 class Solution:
     def rotateRight(head, k):
-        '''
+        """
         Time Complexity: O(n)
         Space Complexity: O(1)
-        '''
+        """
         if not head:
             return head
 
         fast = head
         slow = head
         length = 0
-        
+
         # To get the length of the Linked List
         while slow:
             length += 1
             slow = slow.next
-        
+
         slow = head
-        
+
         # Total Moves required based on the length of Linked List
-        newK = k%length
+        newK = k % length
 
         # move fast pointer newK times ahead of the slow pointer
         while True:
@@ -51,16 +52,16 @@ class Solution:
                 newK -= 1
             else:
                 break
-        
+
         # move fast and slow at same time
         while fast.next:
             fast = fast.next
             slow = slow.next
-        
+
         # Modify the links
         if slow.next:
             newHead = slow.next
-            # Join last node with head 
+            # Join last node with head
             fast.next = head
             head = newHead
             # Disconnect the new last node

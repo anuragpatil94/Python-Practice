@@ -1,4 +1,4 @@
-'''
+"""
 Given an array of integers nums, write a method that returns the "pivot" index of this array.
 
 We define the pivot index as the index where the sum of the numbers to the left of the index is equal to the sum of the numbers to the right of the index.
@@ -29,7 +29,8 @@ Note:
 The length of nums will be in the range [0, 10000].
 Each element nums[i] will be an integer in the range [-1000, 1000].
 
-'''
+"""
+
 
 class Solution:
     def pivotIndex(self, nums):
@@ -38,22 +39,22 @@ class Solution:
         :rtype: int
         """
         left, right = 0, sum(nums)
-        for index,num in enumerate(nums):
+        for index, num in enumerate(nums):
             right -= num
-            if left ==  right:
+            if left == right:
                 return index
             else:
-                left +=num
+                left += num
         return -1
+
 
 if __name__ == "__main__":
     s = Solution()
     print(s.pivotIndex([1, 7, 3, 6, 5, 6]) == 3)
-    print(s.pivotIndex([1,2,3]) == -1)
-    print(s.pivotIndex([-1,-1,-1,-1,0,1]) == 1)
-    print(s.pivotIndex([-1,-1,-1,-1,-1,-1]) == -1)
-    print(s.pivotIndex([-1,-1,-1,-1,-1,0]) == 2)
-    print(s.pivotIndex([-1,-1,-1,1,1,1]) == -1)
-    print(s.pivotIndex([0,0,0,0,0,0]) == 0)
-    print(s.pivotIndex([-1,-1,0,-1,-1,0]) == 2)
-    
+    print(s.pivotIndex([1, 2, 3]) == -1)
+    print(s.pivotIndex([-1, -1, -1, -1, 0, 1]) == 1)
+    print(s.pivotIndex([-1, -1, -1, -1, -1, -1]) == -1)
+    print(s.pivotIndex([-1, -1, -1, -1, -1, 0]) == 2)
+    print(s.pivotIndex([-1, -1, -1, 1, 1, 1]) == -1)
+    print(s.pivotIndex([0, 0, 0, 0, 0, 0]) == 0)
+    print(s.pivotIndex([-1, -1, 0, -1, -1, 0]) == 2)

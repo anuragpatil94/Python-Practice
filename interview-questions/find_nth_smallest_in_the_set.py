@@ -17,6 +17,8 @@ Find Nth Smallest -
         Hence, the series of going through the array is like n + n/2 + n/4 + n/8 + n/16 .... which become (n).
     Space Complexity: O(1)
 """
+
+
 def findShortestInList(arr):
     min = arr[0]
     for num in arr[1:]:
@@ -24,53 +26,54 @@ def findShortestInList(arr):
             num, min = min, num
     return min
 
+
 def findSecondShortestInList(arr):
     min1 = arr[0]
     min2 = arr[1]
-    for index in enumerate(arr[2:], start = 2):
+    for index in enumerate(arr[2:], start=2):
         if arr[index] < min2:
             arr[index], min2 = min2, arr[index]
         elif arr[index] < min1:
-            arr[index],min1 = min1,arr[index]
+            arr[index], min1 = min1, arr[index]
         if min2 < min1:
-            min1,min2 = min2,min1
+            min1, min2 = min2, min1
     return min2
 
-def findNthShortestInList(arr,n):
+
+def findNthShortestInList(arr, n):
     position = partition(arr)
     if n < position:
-        return findNthShortestInList(arr[:position],n)
-    elif n > position: 
-        return findNthShortestInList(arr[position :], (n - position))
+        return findNthShortestInList(arr[:position], n)
+    elif n > position:
+        return findNthShortestInList(arr[position:], (n - position))
     else:
         return arr[position]
-    
+
 
 def partition(arr):
     l = len(arr)
-    if(l>1):
-        pivot = arr[l-1]
+    if l > 1:
+        pivot = arr[l - 1]
         position = 0
-        for number in range(0,l-1):
+        for number in range(0, l - 1):
             if arr[number] <= pivot:
-                arr[position],arr[number] = arr[number],arr[position]
+                arr[position], arr[number] = arr[number], arr[position]
                 position += 1
-        arr[position],arr[l-1] = arr[l-1],arr[position]
+        arr[position], arr[l - 1] = arr[l - 1], arr[position]
         return position
 
+
 if __name__ == "__main__":
-    arr = [4,7,2,9,1,10,45,21,15,31,13,41,14,68,18]
+    arr = [4, 7, 2, 9, 1, 10, 45, 21, 15, 31, 13, 41, 14, 68, 18]
     print(arr)
-    min = findShortestInList(arr) # O(n)
+    min = findShortestInList(arr)  # O(n)
     print(min)
 
-    arr = [4,7,2,9,1,10,45,21,15,31,13,41,14,68,18]
-    min = findSecondShortestInList(arr) # O(n)
+    arr = [4, 7, 2, 9, 1, 10, 45, 21, 15, 31, 13, 41, 14, 68, 18]
+    min = findSecondShortestInList(arr)  # O(n)
     print(min)
 
-    arr = [4,7,2,9,1,10,45,21,15,31,13,41,14,68,18]
+    arr = [4, 7, 2, 9, 1, 10, 45, 21, 15, 31, 13, 41, 14, 68, 18]
     n = 10
-    min = findNthShortestInList(arr,n-1) # O(n)
+    min = findNthShortestInList(arr, n - 1)  # O(n)
     print(min)
-
-    

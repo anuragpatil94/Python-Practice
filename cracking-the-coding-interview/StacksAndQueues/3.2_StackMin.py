@@ -1,4 +1,4 @@
-'''
+"""
 
 3.2 Stack Min: 
     How would you design a stack which, in addition to push and pop, has a function min which returns the minimum element? 
@@ -11,8 +11,7 @@ Store one more array which will store the min everytime a element is pushed. Whe
 Improvement:
 push to stack only if minimum
 
-'''
-
+"""
 
 
 class StackMin:
@@ -21,25 +20,25 @@ class StackMin:
         self.minStack = []
 
     def push(self, val):
-        ''' Time Complexity: O(1) '''
+        """ Time Complexity: O(1) """
         self.stack.append(val)
-        if(len(self.stack) > 1):
+        if len(self.stack) > 1:
             if val < self.minStack[-1]:
                 self.minStack.append(min(val, self.minStack[-1]))
         else:
             self.minStack.append(val)
 
     def pop(self) -> int:
-        ''' Time Complexity: O(1) '''
+        """ Time Complexity: O(1) """
         x = self.stack.pop()
         if x <= self.minStack[-1]:
             self.minStack.pop()
         return x
 
     def min(self):
-        ''' Time Complexity: O(1) '''
+        """ Time Complexity: O(1) """
         return self.minStack[-1]
-    
+
     def show(self):
         return self.stack
 

@@ -13,7 +13,7 @@ class Dijkstra:
         pass
 
     def run(self):
-        '''Time Complexity Vlog(E)'''
+        """Time Complexity Vlog(E)"""
         # Initialize Parent Dictionary
         parent = {}
         # Initialize minDistance Dictionary
@@ -29,7 +29,7 @@ class Dijkstra:
 
         # Loop through initial that is all the nodes such that we always take minimum distance first.
         while initial:
-            
+
             node = self.extractMin(initial)
             minDistance[node] = initial[node]
             initial.pop(node)
@@ -43,7 +43,7 @@ class Dijkstra:
         return [parent, minDistance]
 
     def extractMin(self, initial):
-        ''' Time Complexity : O(V) '''
+        """ Time Complexity : O(V) """
         min = math.inf
         minIndex = None
         for key in initial:
