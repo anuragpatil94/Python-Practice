@@ -176,7 +176,7 @@ class LinkedList:
 
         n = Node(data)
 
-        if self.empty() and index is not 0:
+        if self.empty() and index != 0:
             print("Linked List is Empty hence value cannot be added to index: ", index)
             return
 
