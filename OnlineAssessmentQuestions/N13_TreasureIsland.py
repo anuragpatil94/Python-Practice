@@ -1,3 +1,5 @@
+from collections import deque
+
 """
 You have a map that marks the location of a treasure island. 
 Some of the map area has jagged rocks and dangerous reefs. 
